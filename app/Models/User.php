@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $table = "usuarios";
+    
     protected $fillable = [
         'name',
         'email',
@@ -43,7 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function usuariosSeguindo(){
-        return $this->hasToMany(UsuarioSeguidor::class,'id_usuario_seguindo');
+    public function usuarioSeguidor(){
+        return $this->hasToMany(UsuarioSeguidor::class,'id_usuario');
     }
+
+    
 }

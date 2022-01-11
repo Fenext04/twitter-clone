@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -11487,4 +11487,19 @@ h2 {
 
 .tweet:hover {
     background-color: #f5f8fa;
+}
+
+
+#barra_navegacao{
+  font-size: 1.2em;
+}
+
+.mudar-cor a:hover{
+  color: #0a53be !important;
+  
+}
+
+#botao-logout a:hover{
+  background-color: #dc3545 !important;
+  color: white !important;
 }

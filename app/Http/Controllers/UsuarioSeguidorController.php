@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\UsuarioSeguidor;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class UsuarioSeguidorController extends Controller
 {
     /**
@@ -14,7 +16,20 @@ class UsuarioSeguidorController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = DB::table("usuarios")
+        ->select("usuarios.id","usuarios.name",(DB::raw("(select count(*)
+            from usuario_seguidores as us 
+            where
+            us.id_usuario =usuarios.id  and us.id_usuario_seguindo = ".Auth::user()->id.") AS seguindo_sn " )))
+        ->where("usuarios.id","<>",Auth::user()->id)
+        ->orderBy("usuarios.name")
+        ->get();
+
+        $quantidade_tweets = Tweet::where("id_usuario",Auth::user()->id)->count();
+        $quantidadeSeguidores= UsuarioSeguidor::where("id_usuario",Auth::user()->id)->count();
+        $quantidadeUsuariosSeguindo= UsuarioSeguidor::where("id_usuario_seguindo",Auth::user()->id)->count();
+       
+      return view("app.mostrar-usuarios",compact("usuarios","quantidadeSeguidores","quantidade_tweets","quantidadeUsuariosSeguindo"));
     }
 
     /**
@@ -35,7 +50,9 @@ class UsuarioSeguidorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        UsuarioSeguidor::create($request->all());
+
+        return redirect()->route("usuario-seguidor.index");
     }
 
     /**
@@ -80,6 +97,18 @@ class UsuarioSeguidorController extends Controller
      */
     public function destroy(UsuarioSeguidor $usuarioSeguidor)
     {
-        //
+        $usuarioSeguidor->delete();
+        
+        
     }
+
+    public function deixarSeguir($id_usuario){
+        $usuarioSeguidor = UsuarioSeguidor::where("id_usuario",$id_usuario)
+        ->where("id_usuario_seguindo",Auth::user()->id)->first();
+
+       $this->destroy($usuarioSeguidor);
+       return redirect()->route("usuario-seguidor.index");
+    }
+
+    
 }

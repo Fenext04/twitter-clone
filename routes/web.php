@@ -12,15 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', ["App\Http\Controllers\Auth\LoginController","showLoginForm"])->name("visitante.index");
-
 Auth::routes();
-
-Route::resource("tweet","App\Http\Controllers\TweetController")->middleware("verificar.login");
-
-Route::get("/usuarios",["App\Http\Controllers\UsuarioController","index"])->name("usuarios.index");
+Route::get('/', ["App\Http\Controllers\Auth\LoginController","showLoginForm"])->name("visitante.index");
 
 Route::get('/cadastrar', function () {
     return view('auth.register');
 })->name("visitante.cadastro");
+
+Route::middleware("verificar.login")->prefix("/twitter-clone")->group(function () {
+    Route::resource("tweet","App\Http\Controllers\TweetController");
+    Route::post("/usuario-seguidor/{id_usuario}", ["App\Http\Controllers\UsuarioSeguidorController","deixarSeguir"])->name("usuario-seguidor.deixar-seguir");
+    Route::resource("usuario-seguidor", "App\Http\Controllers\UsuarioSeguidorController");
+    
+    
+});
+
+
+
+
+

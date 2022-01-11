@@ -35,14 +35,14 @@
 						<div class="col">
 							<span class="perfilPainelItem">Seguindo</span><br />
 							<span class="perfilPainelItemValor">
-								
+								{{$quantidadeUsuariosSeguindo}}
 							</span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguidores</span><br />
 							<span class="perfilPainelItemValor">
-								
+								{{$quantidadeSeguidores}}
 							</span>
 						</div>
 
@@ -107,7 +107,7 @@
 			<div class="quemSeguir">
 				<span class="quemSeguirTitulo">Quem seguir</span><br />
 				<hr />
-				<a href="{{route("usuarios.index")}}" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
+				<a href="{{route("usuario-seguidor.index")}}" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
 			</div>
 		</div>
 

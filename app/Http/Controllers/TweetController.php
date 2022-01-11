@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Tweet;
+use App\Models\UsuarioSeguidor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class TweetController extends Controller
@@ -14,8 +15,11 @@ class TweetController extends Controller
     public function index()
     {
         $quantidade_tweets = Tweet::where("id_usuario",Auth::user()->id)->count();
+        $quantidadeSeguidores= UsuarioSeguidor::where("id_usuario",Auth::user()->id)->count();
+        $quantidadeUsuariosSeguindo= UsuarioSeguidor::where("id_usuario_seguindo",Auth::user()->id)->count();
+
         $tweets = Tweet::orderByDesc("created_at")->get();
-        return view("app.index",compact("tweets","quantidade_tweets"));
+        return view("app.index",compact("tweets","quantidade_tweets","quantidadeUsuariosSeguindo","quantidadeSeguidores"));
     }
 
     /**

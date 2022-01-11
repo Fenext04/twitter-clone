@@ -22,17 +22,17 @@
 
 						<div class="col">
 							<span class="perfilPainelItem">Tweets</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">{{$quantidade_tweets}}</span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">{{$quantidadeUsuariosSeguindo}}</span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">{{$quantidadeSeguidores}}</span>
 						</div>
 
 					</div>
@@ -44,51 +44,52 @@
 
 		<div class="col-md-6">
 			
-			<div class="row mb-2">
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-							<form method="get" action="">
-								<div class="input-group mb-3">
-									<input type="text" name="pesquisarPor" class="form-control" placeholder="Quem você está procurando?">
-									<div class="input-group-append">
-										<button class="btn btn-primary" type="submit">Procurar</button>
+			@foreach ($usuarios as $usuario)
+				
+					<div class="row mb-2">
+						<div class="col">
+								<div class="card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-6">
+												{{$usuario->name}}
+											</div>
+										
+											<div class="col-md-6 d-flex justify-content-end">
+												@if($usuario->seguindo_sn == 1)
+													<div>
+														<form method="post" action="{{route("usuario-seguidor.deixar-seguir",["id_usuario"=>$usuario->id])}}">
+															@csrf
+															
+															
+															<button type="submit"  class="btn btn-danger">Deixar de Seguir</button>
+															
+														</form>
+													
+													</div>
+												@else
+													<div>
+													<form method="post" action="{{route("usuario-seguidor.store")}}">
+														@csrf
+														<input type="hidden" name="id_usuario" value="{{$usuario->id}}">
+														<input type="hidden" name="id_usuario_seguindo" value="{{Auth::user()->id}}">
+														<button type="submit"  class="btn btn-success">Seguir</button>
+													</form>	
+												</div>
+												@endif
+												
+											</div>
+										</div>
 									</div>
 								</div>
-							</form>
 						</div>
 					</div>
-				</div>
-			</div>
+				
+				
+			@endforeach
 
 			
-				@foreach ($usuarios as $usuario)
-                    <div class="row mb-2">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                           {{$usuario->name}} 
-                                        </div>
-                                    
-                                        <div class="col-md-6 d-flex justify-content-end">
-                                            <div>
-                                                
-                                                    <a href="" class="btn btn-success">Seguir</a>
-                                                
-
-                                                
-                                                    <a href="" class="btn btn-danger">Deixar de seguir</a>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-				    </div>
-                @endforeach
+				
 			
 		</div>
 	</div>
