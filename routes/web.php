@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/', ["App\Http\Controllers\Auth\LoginController","showLoginForm"])->name("visitante.index");
+Route::get('/',function(){
+    return view("auth.login");
+});
 
 Route::get('/cadastrar', function () {
     return view('auth.register');
