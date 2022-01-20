@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/',function(){
     return view("auth.login");
-});
+})->name("visitante.index");
 
 Route::get('cadastrar', function () {
     return view('auth.register');
