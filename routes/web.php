@@ -13,13 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/',function(){
-    return view("auth.login");
-})->name("visitante.index");
 
-Route::get('cadastrar', function () {
+Route::get('/',function(){
+    return view("welcome");
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name("visitante.login");
+
+Route::get('/cadastrar', function () {
     return view('auth.register');
 })->name("visitante.cadastro");
+
 
 Route::middleware("verificar.login")->prefix("/twitter-clone")->group(function () {
     Route::resource("tweet","App\Http\Controllers\TweetController");
