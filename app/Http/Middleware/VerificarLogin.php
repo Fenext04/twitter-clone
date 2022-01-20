@@ -20,7 +20,7 @@ class VerificarLogin
             return $next($request);
         }
         else{
-            return redirect()->route("visitante.index");
+            return redirect()->route("visitante.login");
         }
     }
 }

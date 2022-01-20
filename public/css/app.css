@@ -11287,6 +11287,9 @@ textarea.form-control-lg {
   }
 }
 
+body{
+  background-color: #f3f2ef;
+}
 #area_login{
   text-align: center;
   margin-top: 100px;
@@ -11464,6 +11467,7 @@ h2 {
     display: block;
     width: 100%;
     padding:20px;
+    border-radius: 8px;
 }
 
 .quemSeguirTitulo {
@@ -11480,9 +11484,12 @@ h2 {
 }
 
 .tweet {
-    padding:15px;
+    padding:10px;
+    margin-bottom:10px;
     border-bottom: 1px solid #e6ecf0;
     cursor: pointer;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .tweet:hover {
@@ -11491,7 +11498,7 @@ h2 {
 
 
 #barra_navegacao{
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .mudar-cor a:hover{
@@ -11499,7 +11506,12 @@ h2 {
   
 }
 
-#botao-logout a:hover{
-  background-color: #dc3545 !important;
+#barra_navegacao li{
+  margin-left: 8px;
+}
+
+#barra_navegacao a:hover{
   color: white !important;
+  background-color: #0d6efd;
+  
 }

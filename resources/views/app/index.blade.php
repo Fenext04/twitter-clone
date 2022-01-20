@@ -1,6 +1,29 @@
 @extends("layouts.app")
 @section("content")
+	<div class="container-fluid bg-white" id="barra_navegacao">
+		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+		<span href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+			<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+			<span class="fs-4 text-primary">Twitter</span>
+		</span>
 
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a href="{{route("tweet.index")}}" class="nav-link text-dark"> Início </a></li>
+			<li class="nav-item"><a href="{{route("usuario-seguidor.index")}}" class="nav-link text-dark"> Procurar Alguém </a></li>
+			<li class="nav-item "><a class="nav-link bg-danger text-white" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Sair
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+			
+		</ul>
+		</header>
+	</div>
+  
 
 
   <div class="container mt-5">
