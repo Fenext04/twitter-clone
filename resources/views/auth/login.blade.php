@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-4">
                 <div id="area_login">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <img class="mb-4" src="img/logo.png" alt="" width="72" height="57">
                         <h1 class="h3 mb-3 fw-normal">Login</h1>
