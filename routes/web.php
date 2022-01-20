@@ -17,7 +17,7 @@ Route::get('/',function(){
     return view("auth.login");
 });
 
-Route::get('/cadastrar', function () {
+Route::get('cadastrar', function () {
     return view('auth.register');
 })->name("visitante.cadastro");
 
