@@ -33,7 +33,7 @@
                         <div id="area_link_cadastro">
                             <a href="{{route("visitante.cadastro")}}" class="btn btn-info btn-sm text-white">Cadastrar-se </a>
                         </div>
-                        <p class="mt-5 mb-3 text-muted">&copy; 2021 - Banco de Dados 1</p>
+                        <p class="mt-5 mb-3 text-muted">&copy; 2021 - Mateus Melo e Israel Silva -  Trabalho de Banco de Dados 1 </p>
                     </form>
                 </div>
             </div>
