@@ -9,7 +9,7 @@
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a href="{{route("tweet.index")}}" class="nav-link text-dark"> Início </a></li>
-			<li class="nav-item"><a href="{{route("usuario-seguidor.index")}}" class="nav-link text-dark"> Procurar Alguém </a></li>
+			<li class="nav-item"><a href="{{route("usuario-seguidor.index")}}" class="nav-link text-dark"> Pesquisar pessoas </a></li>
 			<li class="nav-item "><a class="nav-link bg-danger text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

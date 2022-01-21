@@ -9,7 +9,7 @@
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a href="{{route("tweet.index")}}" class="nav-link text-dark"> Início </a></li>
-			<li class="nav-item"><a href="{{route("usuario-seguidor.index")}}" class="nav-link text-dark"> Procurar Alguém </a></li>
+			<li class="nav-item"><a href="{{route("usuario-seguidor.index")}}" class="nav-link text-dark"> Pesquisar pessoas </a></li>
 			<li class="nav-item "><a class="nav-link bg-danger text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,10 +78,10 @@
 
 		<div class="col-md-6">
 			<div class="row mb-2">
-				<div class="col tweetBox">
+				<div class="col tweetBox ">
 					<form method="post" action="{{route("tweet.store")}}">
             @csrf
-						<textarea class="form-control" name="tweet" id="exampleFormControlTextarea1" rows="3"></textarea>
+						<textarea class="form-control" name="tweet" id="exampleFormControlTextarea1" placeholder="No que você está pensando?"rows="3"></textarea>
 						
 						<div class="col mt-2 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary">Tweet</button>
